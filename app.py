@@ -31,7 +31,7 @@ load_dotenv()
 app = Flask(__name__)
 
 configuration = Configuration(access_token=os.getenv('CHANNEL_ACCESS_TOKEN'))
-handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
+line_handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -60,7 +60,7 @@ def callback():
 
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessageContent)
+@line_handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     text = event.message.text
     with ApiClient(configuration) as api_client:

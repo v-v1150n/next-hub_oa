@@ -75,7 +75,7 @@ def handle_message(event):
             ]
             reply = TextMessage(text="$ LINE 表情符號 $", emojis=emojis)
         elif text in ['圖片','猩猩', '星星']:
-            BASE_URL = 'https://9875930be549.ngrok-free.app'
+            BASE_URL = 'https://next-hub-oa.vercel.app'
             url = f"{BASE_URL}/static/Chimpanzees.jpg"
             app.logger.info(f"url={url}")
             reply = ImageMessage(original_content_url=url, preview_image_url=url)
